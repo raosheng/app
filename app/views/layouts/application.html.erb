@@ -1,14 +1,32 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Ruby on Rails的教程示例应用程序 | <%= yield(:title) %></title>
+    <title><%= full_title(yield(:title)) %></title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
+  <!--if lt IE 9-->
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
 </head>
 <body>
+<header class="navbar navbar-fixed-top navbar-inverse">
+<div class="navbar-inner">
+<div class="container">
+<%= link_to "应用程序", '#', id: "logo" %>
+<nav>
+<ul class="nav pull-right">
+<li><%= link_to "首页", '#' %></li>
+<li><%= link_to "帮助", '#' %></li>
+<li><%= link_to "登录", '#' %></li>
+</ul>
+</nav>
+</div>
+</div>
+</header>
+<div class="container">
 
 <%= yield %> <!--将每一页的内容插入布局中-->
-
+</div>
 </body>
 </html>
